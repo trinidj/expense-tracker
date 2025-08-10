@@ -10,17 +10,20 @@
 
 <template>
   <aside class="h-screen">
-    <nav class="h-full flex flex-col bg-white w-70 border-r-2 shadow-xl border-x-purple-400">
-      <div class="flex flex-row justify-between p-6">
-        <p>Sidebar</p>
-        <button class="bg-gray-500/40 p-1 rounded">
+    <nav class="h-full flex flex-col bg-white w-70 border-r-1 shadow-2xl border-x-purple-400">
+      <div class="flex flex-row items-center justify-between p-6">
+        <div>
+          <h1 class="font-medium">Expense Tracker</h1>
+          <p class="text-xs">Keep Track of your Expenses</p>
+        </div>
+        <button class="p-2 rounded transition duration-300 ease hover:cursor-pointer hover:bg-gray-500/20 hover:">
           <ArrowLeftToLine
             :size="16"
           />
         </button>
       </div>
 
-      <ul class="space-y-2 px-4">
+      <ul class="flex flex-col gap-3 px-4 py-8">
         <SidebarItem 
           v-for="item in navItems"
           :name="item.name"
