@@ -28,7 +28,10 @@
 <template>
   <aside class="h-screen">
     <nav 
-      class="h-full flex flex-col justify-between bg-white border-r-1 border-r-purple-400 shadow-2xl transition-all w-60"
+      :class="[
+        'h-full flex flex-col justify-between bg-white border-r-1 border-r-purple-400 shadow-2xl transition-all', 
+        sidebarOpen ? 'w-60' : 'w-15 items-center'
+      ]"
     >
       <div class="flex flex-row p-5 items-center justify-between">
         <div :class="['overflow-hidden transition-all whitespace-nowrap', sidebarOpen ? 'w-40' : 'w-0']">
@@ -46,8 +49,8 @@
         </button>
       </div>
 
-      <div>
-        <ul class="flex flex-col gap-5 p-5">
+      <div :class="['transition-all overflow-hidden', sidebarOpen ? 'w-50' : 'item-center w-10']">
+        <ul :class="['flex flex-col gap-5 p-5 ']">
           <SidebarItem 
             v-for="item in navItems"
             :key="item.path"
@@ -57,7 +60,6 @@
           />
         </ul>
       </div>
-      
 
       <div class="flex flex-col mt-auto">
         <ul class="flex flex-col gap-2 p-5">
