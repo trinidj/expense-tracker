@@ -3,6 +3,6 @@
 
 <template>
   <div class="flex items-center justify-center">
-    <p>Dashboard</p>
+    <p>Budget</p>
   </div>
 </template>
