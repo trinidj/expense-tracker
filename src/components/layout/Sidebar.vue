@@ -13,8 +13,10 @@
     <nav class="h-full flex flex-col bg-white w-70 border-r-2 shadow-xl border-x-purple-400">
       <div class="flex flex-row justify-between p-6">
         <p>Sidebar</p>
-        <button>
-          <ArrowLeftToLine />
+        <button class="bg-gray-500/40 p-1 rounded">
+          <ArrowLeftToLine
+            :size="16"
+          />
         </button>
       </div>
 
