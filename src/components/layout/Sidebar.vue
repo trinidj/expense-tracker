@@ -12,7 +12,7 @@
   <aside class="h-screen">
     <nav class="h-full flex flex-col bg-white w-70 border-r-1 shadow-2xl border-x-purple-400">
       <div class="flex flex-row items-center justify-between p-6">
-        <div>
+        <div class="flex flex-col gap-1">
           <h1 class="font-medium">Expense Tracker</h1>
           <p class="text-xs">Keep Track of your Expenses</p>
         </div>
@@ -23,7 +23,7 @@
         </button>
       </div>
 
-      <ul class="flex flex-col gap-3 px-4 py-8">
+      <ul class="flex flex-col gap-2 px-4 py-8">
         <SidebarItem 
           v-for="item in navItems"
           :name="item.name"
