@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue';
-  import SidebarItem from '@/components/ui/SidebarItem.vue';
   import SidebarHeader from '@/components/SidebarHeader.vue';
+  import SidebarContent from '@/components/SidebarContent.vue';
   import { LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
 
   const navItems = [
@@ -38,19 +38,11 @@
         @toggle-sidebar="toggleSidebar"
       />
 
-      <div class="transition-all overflow-hidden">
-        <ul class="flex flex-col gap-5 p-5 transition-all overflow-hidden">
-          <SidebarItem 
-            v-for="item in navItems"
-            :key="item.path"
-            :name="item.name"
-            :path="item.path"
-            :icon="item.icon"
-            :sidebar-open="isExtended"
-          />
-        </ul>
-      </div>
-
+      <SidebarContent 
+        :isExtended="isExtended"
+        :navItems="navItems"
+      />
+      
       <div class="flex flex-col mt-auto">
         <ul class="flex flex-col gap-2 p-5">
           <SidebarItem 
