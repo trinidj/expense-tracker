@@ -4,8 +4,14 @@ import Transactions from '@/views/Transactions.vue';
 import Reports from '@/views/Reports.vue';
 import Budget from '@/views/Budget.vue';
 import Wallets from '@/views/Wallets.vue';
+import Profile from '@/views/Profile.vue';
+import Settings from '@/views/Settings.vue';
 
 const routes = [
+  {
+    path: '/',
+    redirect: '/dashboard'
+  },
   {
     path: '/dashboard',
     name: 'Dashboard',
@@ -30,6 +36,16 @@ const routes = [
     path: '/wallets', 
     name: 'Wallets', 
     component: Wallets
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings
   }
 ];
 
