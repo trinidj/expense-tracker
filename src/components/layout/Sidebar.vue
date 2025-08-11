@@ -22,7 +22,6 @@
   const isExtended = ref(true);
 
   const toggleSidebar = () => {
-    console.log('Click!');
     isExtended.value = !isExtended.value;
   }
 </script>
@@ -31,7 +30,7 @@
   <aside class="h-screen">
     <nav 
       :class="[
-        'h-full flex flex-col justify-between bg-white border-r-1 border-r-purple-400 shadow-2xl transition-all duration-300', 
+        'h-full flex flex-col justify-between bg-white border-r-2 border-purple-400 shadow-2xl transition-all duration-300', 
         isExtended? 'w-60' : 'w-16 items-center'
       ]"
     >

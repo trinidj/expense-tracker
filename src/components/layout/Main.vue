@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <main>
+  <main class="flex h-screen">
     <slot />
   </main>
 </template>
