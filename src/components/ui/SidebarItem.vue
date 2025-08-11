@@ -5,6 +5,8 @@
     name: { type: String },
     path: { type: String },
     icon: { type: [Object, Function], default: null },
+    size: { type: Number, default: 20 },
+    sidebarOpen: { type: Boolean, default: true },
   })
 </script>
 
@@ -15,8 +17,14 @@
       class="flex items-center gap-3 text-gray-700 hover:text-purple-600 font-medium"
       active-class="text-purple-600"
     >
-      <component :is="props.icon" />
-      <p class="text-md">{{ props.name }}</p>
+      <component :is="props.icon" class="flex-shrink-0 " />
+      <p 
+        v-show="props.sidebarOpen" 
+        class="transition-opacity duration-300"
+        :class="['overflow-hidden transition-all']"
+      >
+        {{ props.name }}
+      </p>
     </RouterLink>
   </li>
 </template>
