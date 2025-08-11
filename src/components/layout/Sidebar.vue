@@ -1,14 +1,15 @@
 <script setup>
   import { ref } from 'vue';
   import SidebarItem from '@/components/ui/SidebarItem.vue';
-  import { ArrowLeftToLine, LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
+  import SidebarHeader from '@/components/SidebarHeader.vue';
+  import { LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
 
   const navItems = [
-    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { name: 'Transactions', path: '/transactions', icon: CreditCard },
-    { name: 'Budgets', path: '/budgets', icon: Banknote },
-    { name: 'Reports', path: '/analytics', icon: ChartArea },
-    { name: 'Wallets', path: '/wallets', icon: Wallet }
+    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, size: 20 },
+    { name: 'Transactions', path: '/transactions', icon: CreditCard, size: 20 },
+    { name: 'Budgets', path: '/budgets', icon: Banknote, size: 20 },
+    { name: 'Reports', path: '/analytics', icon: ChartArea, size: 20 },
+    { name: 'Wallets', path: '/wallets', icon: Wallet, size: 20 }
   ]
 
   const accountItems = [
@@ -16,47 +17,36 @@
     { name: 'Settings', path: '/settings', icon: Settings },
   ]
 
-  const sidebarOpen = ref(true);
+  const isExtended = ref(true);
 
   const toggleSidebar = () => {
     console.log('Click!');
-    sidebarOpen.value = !sidebarOpen.value;
+    isExtended.value = !isExtended.value;
   }
-
 </script>
 
 <template>
   <aside class="h-screen">
     <nav 
       :class="[
-        'h-full flex flex-col justify-between bg-white border-r-1 border-r-purple-400 shadow-2xl transition-all', 
-        sidebarOpen ? 'w-60' : 'w-15 items-center'
+        'h-full flex flex-col justify-between bg-white border-r-1 border-r-purple-400 shadow-2xl transition-all duration-300', 
+        isExtended? 'w-60' : 'w-16 items-center'
       ]"
     >
-      <div class="flex flex-row p-5 items-center justify-between">
-        <div :class="['overflow-hidden transition-all whitespace-nowrap', sidebarOpen ? 'w-40' : 'w-0']">
-          <h1 class="font-medium">Expense Tracker</h1>
-          <p class="text-xs">Keep Track of your Expenses</p>
-        </div>
-        <button 
-          @click="toggleSidebar" 
-          class="flex items-center justify-center p-2 rounded transition duration-300 ease hover:cursor-pointer hover:bg-gray-500/20"
-        >
-          <ArrowLeftToLine
-            :size="16"
-            :class="['transition-transform duration-100', sidebarOpen ? '' : 'rotate-180']"
-          />
-        </button>
-      </div>
+      <SidebarHeader 
+        :isExtended="isExtended"
+        @toggle-sidebar="toggleSidebar"
+      />
 
-      <div :class="['transition-all overflow-hidden', sidebarOpen ? 'w-50' : 'item-center w-10']">
-        <ul :class="['flex flex-col gap-5 p-5 ']">
+      <div class="transition-all overflow-hidden">
+        <ul class="flex flex-col gap-5 p-5 transition-all overflow-hidden">
           <SidebarItem 
             v-for="item in navItems"
             :key="item.path"
             :name="item.name"
             :path="item.path"
             :icon="item.icon"
+            :sidebar-open="isExtended"
           />
         </ul>
       </div>
@@ -69,6 +59,8 @@
             :name="item.name"
             :path="item.path"
             :icon="item.icon"
+            :size="item.size"
+            :sidebar-open="isExtended"
           />
         </ul>
       </div>
