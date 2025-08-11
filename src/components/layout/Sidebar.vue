@@ -1,8 +1,10 @@
 <script setup>
   import { ref } from 'vue';
+  import { LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
+
   import SidebarHeader from '@/components/SidebarHeader.vue';
   import SidebarContent from '@/components/SidebarContent.vue';
-  import { LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
+  import SidebarFooter from '@/components/SidebarFooter.vue';
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, size: 20 },
@@ -42,20 +44,11 @@
         :isExtended="isExtended"
         :navItems="navItems"
       />
-      
-      <div class="flex flex-col mt-auto">
-        <ul class="flex flex-col gap-2 p-5">
-          <SidebarItem 
-            v-for="item in accountItems"
-            :key="item.path"
-            :name="item.name"
-            :path="item.path"
-            :icon="item.icon"
-            :size="item.size"
-            :sidebar-open="isExtended"
-          />
-        </ul>
-      </div>
+
+      <SidebarFooter 
+        :isExtended="isExtended"
+        :accountItems="accountItems"
+      />
     </nav>
   </aside>
 </template>
