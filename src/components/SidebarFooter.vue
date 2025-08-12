@@ -13,8 +13,8 @@
 </script>
 
 <template>
-  <div class="flex p-2">
-    <ul class="flex flex-col gap-3">
+  <div class="flex p-2 w-full">
+    <ul class="flex flex-col gap-3 w-full">
       <SidebarItem 
         v-for="item in footerItems"
         :key="item.path"
