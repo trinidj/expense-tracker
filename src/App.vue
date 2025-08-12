@@ -3,7 +3,7 @@
   import Sidebar from '@/components/layout/Sidebar.vue';
   import { ref } from 'vue';
 
-  const isExtended = ref(false);
+  const isExtended = ref(true);
 
 </script>
 
@@ -12,7 +12,7 @@
     <Sidebar 
       :isExtended="isExtended"
       @mouseenter="isExtended = true"
-      @mouseleave="isExtended =false"
+      @mouseleave="isExtended = false"
     />
     <RouterView id="page"/>
   </Main>

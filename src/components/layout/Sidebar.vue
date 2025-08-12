@@ -29,10 +29,9 @@
 
 <template>
   <aside class="h-screen">
-    <nav 
-      :class="[
-        'h-full flex flex-col align-center justify-between bg-white border-r-2 border-purple-400 shadow-2xl transition-all duration-300', 
-        props.isExtended? 'w-50' : 'w-15'  
+    <nav :class="[
+        'h-full flex flex-col items-center justify-between bg-white border-r-2 border-purple-400 shadow-2xl transition-all duration-300', 
+        props.isExtended? 'w-50 items-start' : 'w-14 items-start'  
       ]"
     >
       <SidebarHeader 

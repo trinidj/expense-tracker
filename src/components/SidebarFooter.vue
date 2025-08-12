@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <div class="flex p-2 w-20">
+  <div class="flex p-2">
     <ul class="flex flex-col gap-3">
       <SidebarItem 
         v-for="item in footerItems"
