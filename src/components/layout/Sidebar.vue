@@ -14,39 +14,40 @@
     { name: 'Wallets', path: '/wallets', icon: Wallet, size: 20 }
   ]
 
-  const accountItems = [
-    { name: 'Profile', path: '/profile', icon: User },
-    { name: 'Settings', path: '/settings', icon: Settings },
+  const footerItems = [
+    { name: 'Profile', path: '/profile', icon: User, size: 20 },
+    { name: 'Settings', path: '/settings', icon: Settings, size: 20 },
   ]
 
-  const isExtended = ref(true);
-
-  const toggleSidebar = () => {
-    isExtended.value = !isExtended.value;
-  }
+  const props = defineProps({
+    isExtended: {
+      type: Boolean,
+      default: false
+    }
+  })
 </script>
 
 <template>
   <aside class="h-screen">
     <nav 
       :class="[
-        'h-full flex flex-col justify-between bg-white border-r-2 border-purple-400 shadow-2xl transition-all duration-300', 
-        isExtended? 'w-60' : 'w-16 items-center'
+        'h-full flex flex-col align-center justify-between bg-white border-r-2 border-purple-400 shadow-2xl transition-all duration-300', 
+        props.isExtended? 'w-50' : 'w-15'  
       ]"
     >
       <SidebarHeader 
-        :isExtended="isExtended"
-        @toggle-sidebar="toggleSidebar"
+        :isExtended="props.isExtended"
+        :headerItems="headerItems"
       />
 
       <SidebarContent 
-        :isExtended="isExtended"
+        :isExtended="props.isExtended"
         :navItems="navItems"
       />
 
       <SidebarFooter 
-        :isExtended="isExtended"
-        :accountItems="accountItems"
+        :isExtended="props.isExtended"
+        :footerItems="footerItems"
       />
     </nav>
   </aside>

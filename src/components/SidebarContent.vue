@@ -13,13 +13,13 @@
 </script>
 
 <template>
-  <div class="transition-all overflow-hidden">
-    <ul class="flex flex-col gap-5 p-5 transition-all overflow-hidden">
+  <div class="flex flex-1 p-2">
+    <ul class="flex flex-col gap-3">
       <SidebarItem 
         v-for="item in navItems"
         :key="item.path"
-        :name="item.name"
         :path="item.path"
+        :name="item.name"
         :icon="item.icon"
         :sidebar-open="isExtended"
       />

@@ -2,7 +2,7 @@
   import SidebarItem from '@/components/ui/SidebarItem.vue';
 
   const props = defineProps({
-    accountItems: {
+    footerItems: {
       type: Array
     },
     isExtended: {
@@ -13,15 +13,14 @@
 </script>
 
 <template>
-  <div class="flex flex-col mt-auto">
-    <ul class="flex flex-col gap-2 p-5">
+  <div class="flex p-2 w-20">
+    <ul class="flex flex-col gap-3">
       <SidebarItem 
-        v-for="item in accountItems"
+        v-for="item in footerItems"
         :key="item.path"
-        :name="item.name"
         :path="item.path"
+        :name="item.name"
         :icon="item.icon"
-        :size="item.size"
         :sidebar-open="isExtended"
       />
     </ul>
