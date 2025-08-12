@@ -3,7 +3,7 @@
   import Sidebar from '@/components/layout/Sidebar.vue';
   import { ref } from 'vue';
 
-  const isExtended = ref(true);
+  const isExtended = ref(false);
 
 </script>
 
