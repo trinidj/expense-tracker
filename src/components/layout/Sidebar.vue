@@ -35,7 +35,6 @@
     >
       <SidebarHeader 
         :isExtended="props.isExtended"
-        :headerItems="headerItems"
       />
 
       <SidebarContent 
