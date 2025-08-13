@@ -1,5 +1,4 @@
 <script setup>
-  import { ref } from 'vue';
   import { LayoutDashboard, CreditCard, ChartArea, User, Settings, Banknote, Wallet } from 'lucide-vue-next';
 
   import SidebarHeader from '@/components/SidebarHeader.vue';
