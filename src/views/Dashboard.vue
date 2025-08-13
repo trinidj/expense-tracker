@@ -1,20 +1,21 @@
 <script setup>
   import { DollarSign, BanknoteArrowDown, BanknoteArrowUp, ShoppingBag } from 'lucide-vue-next';
-  import { getAllMonths } from '@/utils/getAllMonths.js';
   import { ref, onMounted } from "vue";
-  import { RouterLink } from 'vue-router';          
+  import { RouterLink } from 'vue-router';     
+  import { getAllMonths } from '@/utils/getAllMonths';
 
   import Chart from 'primevue/chart';
+  import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
+
+  const barData = ref();
+  const barOptions = ref();
 
   onMounted(() => {
-      chartData.value = setChartData();
-      chartOptions.value = setChartOptions();
+    barData.value = setBarData();
+    barOptions.value = setBarOptions();
   });
 
-  const chartData = ref();
-  const chartOptions = ref();
-
-  const setChartData = () => {
+  const setBarData = () => {
     return {
       labels: getAllMonths(),
       datasets: [
@@ -30,7 +31,7 @@
     };
   };
 
-  const setChartOptions = () => {
+  const setBarOptions = () => {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--p-text-color') || '#374151';
     const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color') || '#6B7280';
@@ -66,13 +67,13 @@
         }
       }
     };
-  }
+  };
 </script>
 
 <template>
   <div class="flex flex-col h-screen flex-1">
     <section class="flex-1 p-10"> 
-      <div class="grid grid-cols-4 grid-rows-4 gap-4 h-full">
+      <DashboardGrid>
         <section class="bg-white/45 flex flex-col rounded-xl justify-between h-fit">
           <header class="flex items-center justify-between p-6">
             <h2 class="text-sm">Current Balance</h2>
@@ -104,25 +105,31 @@
         </section>
 
         <section class="bg-white/50 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col">
-          <header class="p-6 pb-2">
+          <header class="p-6 pb-0">
             <h2 class="text-xl">Monthly Spending</h2>
           </header>
 
-          <div class="flex-1 p-6 pt-2 min-h-0">
+          <div class="flex p-6 pt-0 h-full">
             <Chart 
               type="bar"
-              :data="chartData"
-              :options="chartOptions"
-              style="height: 100%; width: 100%;"
+              :data="barData"
+              :options="barOptions"
+              style="width: 100%;"
             />
           </div>
         </section>
 
-        <section class="bg-white/50 row-span-2 col-span-3 row-start-1 rounded-xl flex flex-col">
-          
+        <section class="bg-white/50 row-span-2 col-span-1 row-start-1 rounded-xl flex flex-col">
+          <header class="p-6">
+            <h1 class="text-xl">Expense Statistics</h1>
+          </header>  
+
+          <div class="flex items-center justify-center bg-red-300 h-full p-6 pt-0">
+            
+          </div>
         </section>
 
-        <section class="bg-white/50 row-span-2 col-span-3 row-start-3 rounded-xl flex flex-col">
+        <section class="bg-white/50 row-span-2 col-span-1 row-start-3 rounded-xl flex flex-col">
           <header class="flex flex-row items-center justify-between p-6">
             <h2 class="text-xl">Recent Transactions</h2>
             <RouterLink
@@ -132,7 +139,7 @@
             </RouterLink>
           </header>
 
-          <div class=" p-6 pt-0 h-full">
+          <div class="p-6 pt-0 h-full">
             <ul class="flex flex-col h-full">
               <li class="flex flex-row p-2 pl-0 pr-0 items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -158,7 +165,7 @@
             </ul>
           </div>
         </section>
-      </div>
+      </DashboardGrid>
     </section>
   </div>
 </template>
