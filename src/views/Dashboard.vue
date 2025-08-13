@@ -46,23 +46,23 @@
         }
       },
       scales: {
-          x: {
-              ticks: {
-                  color: textColorSecondary
-              },
-              grid: {
-                  color: surfaceBorder
-              }
+        x: {
+          ticks: {
+              color: textColorSecondary
           },
-          y: {
-              beginAtZero: true,
-              ticks: {
-                  color: textColorSecondary
-              },
-              grid: {
-                  color: surfaceBorder
-              }
+          grid: {
+              color: surfaceBorder
           }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+              color: textColorSecondary
+          },
+          grid: {
+              color: surfaceBorder
+          }
+        }
       }
     };
   }
@@ -123,7 +123,11 @@
           </div>
         </div>
 
-        <div class="bg-white/50 row-span-3 col-start-4 row-start-2 rounded-xl"></div>
+        <div class="bg-white/50 row-span-3 col-start-4 row-start-2 rounded-xl flex flex-col">
+          <div class="p-6 pb-2">
+            <h2 class="text-xl">Recent Transactions</h2>
+          </div>
+        </div>
       </div>
     </section>
   </div>
