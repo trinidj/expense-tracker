@@ -1,16 +1,21 @@
 <script setup>
-  import { DollarSign, BanknoteArrowDown, BanknoteArrowUp, ShoppingBag } from 'lucide-vue-next';
   import { ref, onMounted } from "vue";
-  import { RouterLink } from 'vue-router';     
+  // import { RouterLink } from 'vue-router';     
   import { getAllMonths } from '@/utils/getAllMonths';
+  import { BanknoteArrowDown, BanknoteArrowUp, Circle, CircleDollarSign } from "lucide-vue-next";
 
   import Chart from 'primevue/chart';
   import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
+  import MetricCard from "@/components/MetricCard.vue";
+  import ChartCard from "@/components/ChartCard.vue";
+  import TransactionsCard from "@/components/TransactionsCard.vue";
 
   const barData = ref();
   const barOptions = ref();
 
   onMounted(() => {
+    console.log(typeof Chart);
+
     barData.value = setBarData();
     barOptions.value = setBarOptions();
   });
@@ -79,51 +84,33 @@
     <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
         <!-- Metrics -->
-        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
-          <header class="flex items-center justify-between p-6">
-            <h2 class="text-sm">Current Balance</h2>
-            <DollarSign :size="20" />
-          </header>
-          <div class="p-6 pt-0">
-            <p class="text-3xl font-medium">$500.00</p>
-          </div>
-        </section> 
-
-        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
-          <header class="flex items-center justify-between p-6">
-            <h2 class="text-sm">Income</h2>
-            <BanknoteArrowDown :size="20" />
-          </header>
-          <div class="p-6 pt-0">
-            <p class="text-3xl font-medium">$500.00</p>
-          </div>
-        </section>
-
-        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
-          <header class="flex items-center justify-between p-6">
-            <h2 class="text-sm">Expenses</h2>
-            <BanknoteArrowUp :size="20" />
-          </header>
-          <div class="p-6 pt-0">
-            <p class="text-3xl font-medium">$500.00</p>
-          </div>
-        </section>
+        <MetricCard 
+          :name="'Income'" 
+          :icon="BanknoteArrowDown"
+          :value="'$500.00'"
+        />   
+        <MetricCard 
+          :name="'Expense'" 
+          :icon="BanknoteArrowUp"
+          :value="'$500.00'"
+        />
+        <MetricCard 
+          :name="'Current Balance'" 
+          :icon="CircleDollarSign"
+          :value="'$500.00'"
+        />
 
 
-        <section class="bg-white/50 col-span-2 row-span-2 row-start-2 rounded-xl flex flex-col">
-          <header class="p-6 pb-0">
-            <h2 class="text-xl">Monthly Spending</h2>
-          </header>
+        <!-- Chart -->
+        <ChartCard 
+          title="Monthly Expenses"
+          type="bar"
+          :data="barData"
+          :options="barOptions"
+        />
 
-          <div class="flex p-6 pt-0 h-full">
-            <Chart 
-              type="bar"
-              :data="barData"
-              :options="barOptions"
-              style="width: 100%;"
-            />
-          </div>
-        </section>             
+        <!-- Transactions -->
+        <TransactionsCard />
       </DashboardGrid>
     </section>
   </div>
