@@ -87,11 +87,14 @@
         <MetricCard 
           :name="'Income'" 
           :icon="BanknoteArrowDown"
+          :iconColor="'green'"
           :value="'$500.00'"
         />   
+
         <MetricCard 
           :name="'Expense'" 
           :icon="BanknoteArrowUp"
+          :iconColor="'red'"
           :value="'$500.00'"
         />
         <MetricCard 
@@ -99,8 +102,7 @@
           :icon="CircleDollarSign"
           :value="'$500.00'"
         />
-
-
+        
         <!-- Chart -->
         <ChartCard 
           title="Monthly Expenses"
