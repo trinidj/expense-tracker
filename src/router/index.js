@@ -3,8 +3,6 @@ import Dashboard from '@/views/Dashboard.vue';
 import Transactions from '@/views/Transactions.vue';
 import Reports from '@/views/Reports.vue';
 import Budget from '@/views/Budget.vue';
-import Wallets from '@/views/Wallets.vue';
-import Profile from '@/views/Profile.vue';
 import Settings from '@/views/Settings.vue';
 
 const routes = [
@@ -31,16 +29,6 @@ const routes = [
     path: '/budgets',
     name: 'Budgets',
     component: Budget
-  },
-  {
-    path: '/wallets', 
-    name: 'Wallets', 
-    component: Wallets
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile
   },
   {
     path: '/settings',
