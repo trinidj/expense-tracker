@@ -1,12 +1,4 @@
 <script setup>
-  const props = defineProps({
-    rows: {
-      type: Number
-    },
-    cols: {
-      type: Number
-    }
-  });
 </script>
 
 <template>
