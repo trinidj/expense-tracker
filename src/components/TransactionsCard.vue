@@ -1,7 +1,13 @@
 <script setup></script>
 
 <template>
-  <section class="bg-red-300 col-start-4 col-span-2 row-span-4 rounded-xl">
-    <p>Recent Transactions</p>
+  <section class="bg-white/45 col-start-4 col-span-1 row-span-4 rounded-xl">
+    <header>
+      <h2>Recent Transactions</h2>
+    </header>
+
+    <div>
+
+    </div>
   </section>
 </template>

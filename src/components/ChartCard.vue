@@ -22,9 +22,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="bg-red-300 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col">
-    <h2>{{ title }}</h2>
-    <div class="flex-1 min-h-0">
+  <section class="bg-white/45 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col">
+    <header class="p-6">
+      <h2 class="text-balance font-medium">{{ title }}</h2>
+    </header>
+    <div class="flex-1 min-h-0 p-6 pt-0">
       <Chart 
         :type="type"
         :data="data"
