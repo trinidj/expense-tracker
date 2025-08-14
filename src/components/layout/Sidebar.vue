@@ -10,11 +10,9 @@
     { name: 'Transactions', path: '/transactions', icon: CreditCard, size: 20 },
     { name: 'Budgets', path: '/budgets', icon: Banknote, size: 20 },
     { name: 'Reports', path: '/analytics', icon: ChartArea, size: 20 },
-    { name: 'Wallets', path: '/wallets', icon: Wallet, size: 20 }
   ]
 
   const footerItems = [
-    { name: 'Profile', path: '/profile', icon: User, size: 20 },
     { name: 'Settings', path: '/settings', icon: Settings, size: 20 },
   ]
 
