@@ -72,9 +72,14 @@
 
 <template>
   <div class="flex flex-col h-screen flex-1">
-    <section class="flex-1 p-10"> 
+    <header class="flex flex-col p-5">
+      <h1 class="text-2xl">Dashboard</h1>
+      <p>Track your expenses and manage your finances</p>
+    </header>
+    <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
-        <section class="bg-white/45 flex flex-col rounded-xl justify-between h-fit">
+        <!-- Metrics -->
+        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
           <header class="flex items-center justify-between p-6">
             <h2 class="text-sm">Current Balance</h2>
             <DollarSign :size="20" />
@@ -84,7 +89,7 @@
           </div>
         </section> 
 
-        <section class="bg-white/45 flex flex-col rounded-xl justify-between h-fit">
+        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
           <header class="flex items-center justify-between p-6">
             <h2 class="text-sm">Income</h2>
             <BanknoteArrowDown :size="20" />
@@ -94,7 +99,7 @@
           </div>
         </section>
 
-        <section class="bg-white/45 flex flex-col rounded-xl justify-between h-fit">
+        <section class="bg-white/45 flex flex-col col-span-1 rounded-xl justify-between">
           <header class="flex items-center justify-between p-6">
             <h2 class="text-sm">Expenses</h2>
             <BanknoteArrowUp :size="20" />
@@ -104,7 +109,8 @@
           </div>
         </section>
 
-        <section class="bg-white/50 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col">
+
+        <section class="bg-white/50 col-span-2 row-span-2 row-start-2 rounded-xl flex flex-col">
           <header class="p-6 pb-0">
             <h2 class="text-xl">Monthly Spending</h2>
           </header>
@@ -117,54 +123,7 @@
               style="width: 100%;"
             />
           </div>
-        </section>
-
-        <section class="bg-white/50 row-span-2 col-span-1 row-start-1 rounded-xl flex flex-col">
-          <header class="p-6">
-            <h1 class="text-xl">Expense Statistics</h1>
-          </header>  
-
-          <div class="flex items-center justify-center bg-red-300 h-full p-6 pt-0">
-            
-          </div>
-        </section>
-
-        <section class="bg-white/50 row-span-2 col-span-1 row-start-3 rounded-xl flex flex-col">
-          <header class="flex flex-row items-center justify-between p-6">
-            <h2 class="text-xl">Recent Transactions</h2>
-            <RouterLink
-              :to="'/transactions'"
-            >
-              View All
-            </RouterLink>
-          </header>
-
-          <div class="p-6 pt-0 h-full">
-            <ul class="flex flex-col h-full">
-              <li class="flex flex-row p-2 pl-0 pr-0 items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <ShoppingBag 
-                    class="p-2 bg-red-300 rounded-md"
-                    :size="35" 
-                  />
-                  <p>Item 1</p>
-                </div>
-                <p>-$20.00</p>
-              </li>
-
-              <li class="flex flex-row p-2 pl-0 pr-0 items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <ShoppingBag 
-                    class="p-2 bg-red-300 rounded-md"
-                    :size="35" 
-                  />
-                  <p>Item 1</p>
-                </div>
-                <p>-$20.00</p>
-              </li>
-            </ul>
-          </div>
-        </section>
+        </section>             
       </DashboardGrid>
     </section>
   </div>
