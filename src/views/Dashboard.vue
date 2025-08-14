@@ -1,5 +1,6 @@
 <script setup>
   import { ref, onMounted } from "vue";
+
   // import { RouterLink } from 'vue-router';     
   import { getAllMonths } from '@/utils/getAllMonths';
   import { BanknoteArrowDown, BanknoteArrowUp, Circle, CircleDollarSign } from "lucide-vue-next";
@@ -77,9 +78,17 @@
 
 <template>
   <div class="flex flex-col h-screen flex-1">
-    <header class="flex flex-col p-5">
-      <h1 class="text-2xl">Dashboard</h1>
-      <p>Track your expenses and manage your finances</p>
+    <header class="flex flex-row p-5 justify-between items-center">
+      <div class="flex flex-col">
+        <h1 class="text-2xl">Dashboard</h1>
+        <p>Track your expenses and manage your finances</p>
+      </div>
+
+      <div class="flex h-fit">
+        <button class="bg-purple-500 px-5 py-2 rounded-sm transition-all duration-150 ease cursor-pointer hover:bg-purple-600">
+          <p class="text-white ">Add Transaction</p>
+        </button>
+      </div>
     </header>
     <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
