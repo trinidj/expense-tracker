@@ -16,14 +16,15 @@
 </script>
 
 <template>
-  <section class="bg-white/45 flex flex-col col-span-1 row-span-1 rounded-xl Items-center justify-between">
+  <section 
+    class="bg-white/45 flex flex-col col-span-1 row-span-1 rounded-xl Items-center justify-between dark:bg-gray-800/40 dark:border dark:border-gray-800">
     <header class="p-6 pb-0 flex flex-row item-center justify-between">
-      <h2 class="text-balance font-medium">{{ name }}</h2>
+      <h2 class="text-lg font-medium dark:text-white">{{ name }}</h2>
       <component :is="icon" :size="25" :color="iconColor" />
     </header>
 
     <div class="p-6 pt-0">
-      <p class="text-3xl">{{ value }}</p>
+      <p class="text-3xl dark:text-white">{{ value }}</p>
     </div>
   </section> 
 </template>
