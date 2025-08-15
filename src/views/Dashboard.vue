@@ -1,18 +1,20 @@
 <script setup>
   import { ref, onMounted } from "vue";
-
-  // import { RouterLink } from 'vue-router';     
   import { getAllMonths } from '@/utils/getAllMonths';
-  import { BanknoteArrowDown, BanknoteArrowUp, Circle, CircleDollarSign } from "lucide-vue-next";
+  import { BanknoteArrowDown, BanknoteArrowUp, CircleDollarSign } from "lucide-vue-next";
 
   import Chart from 'primevue/chart';
   import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
+  import { Button, Dialog, InputText, AutoComplete, Textarea } from "primevue";
+  import { Form } from "@primevue/forms";
   import MetricCard from "@/components/MetricCard.vue";
   import ChartCard from "@/components/ChartCard.vue";
   import TransactionsCard from "@/components/TransactionsCard.vue";
 
-  const barData = ref();
-  const barOptions = ref();
+  const barData = ref({});
+  const barOptions = ref({});
+
+  const isVisible = ref(false);
 
   onMounted(() => {
     console.log(typeof Chart);
@@ -85,13 +87,48 @@
       </div>
 
       <div class="flex h-fit">
-        <button class="bg-purple-500 px-5 py-2 rounded-sm transition-all duration-150 ease cursor-pointer hover:bg-purple-600">
-          <p class="text-white ">Add Transaction</p>
-        </button>
+        <Button type="button" label="Add Transaction" severity="help" @click="isVisible = true" />
       </div>
     </header>
     <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
+        <Dialog 
+          v-model:visible="isVisible" 
+          modal
+          header="Add Transaction" 
+          :pt="{
+            root: 'w-xl'
+          }"
+        >
+          <Form>
+            <div class="flex flex-col gap-8">
+              <div class="flex flex-row justify-between">
+                <div class="flex flex-col gap-2">
+                  <label for="amount">Amount</label>
+                  <InputText placeholder="0.00" />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <label for="category">Category</label>
+                  <AutoComplete dropdown />
+                </div>
+              </div> 
+
+              <div class="flex flex-col gap-2">
+                <label for="description">Description</label>
+                <Textarea 
+                  style="resize: none"
+                />
+              </div>
+
+              <div class="flex flex-row justify-end gap-4">
+                <Button type="button" label="Cancel" severity="secondary" @click="isVisible = false"/>
+                <Button type="submit" label="Add" severity="help" @click="isVisible = false"/>
+              </div>
+            </div>
+          </Form>
+        </Dialog>
+
         <!-- Metrics -->
         <MetricCard 
           :name="'Income'" 
