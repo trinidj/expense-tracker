@@ -1,25 +1,39 @@
 <script setup>
-  import { ref, onMounted } from "vue";
+  import { ref, onMounted, watch } from "vue";
   import { getAllMonths } from '@/utils/getAllMonths';
   import { BanknoteArrowDown, BanknoteArrowUp, CircleDollarSign } from "lucide-vue-next";
 
   import { Sun, Moon } from "lucide-vue-next";
-  import Chart from 'primevue/chart';
   import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
   import { Button, Dialog, InputText, AutoComplete, Textarea, ToggleSwitch } from "primevue";
   import { Form } from "@primevue/forms";
   import MetricCard from "@/components/MetricCard.vue";
   import ChartCard from "@/components/ChartCard.vue";
   import TransactionsCard from "@/components/TransactionsCard.vue";
+  
+  import { toggleDarkMode } from "@/utils/toggleDarkMode.js";
+  import { getTheme } from "@/utils/getTheme";
 
   const barData = ref({});
   const barOptions = ref({});
 
   const isVisible = ref(false);
+  const isDarkMode = ref(false);
 
   onMounted(() => {
     barData.value = setBarData();
     barOptions.value = setBarOptions();
+    
+    getTheme(isDarkMode);
+  });
+
+  watch(isDarkMode, () => {
+    if (isDarkMode.value) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode.value));
   });
 
   const setBarData = () => {
@@ -79,7 +93,7 @@
 
 <template>
   <div 
-    class="flex flex-col h-screen flex-1 
+    class="flex flex-col h-screen flex-1 overflow-hidden
          bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 
          dark:from-gray-900 dark:via-gray-800 dark:to-purple-800
   ">
@@ -95,7 +109,7 @@
             class="dark:text-white"
           />
           <ToggleSwitch 
-            
+            v-model="isDarkMode"
           />
           <Moon 
             class="dark:text-white"
