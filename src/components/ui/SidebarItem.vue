@@ -14,8 +14,8 @@
   <li class="hover:bg-gray-200 rounded-md transition-colors dark:hover:bg-gray-700">
     <RouterLink
       :to="props.path"  
-      class="flex items-center text-gray-700 hover:text-purple-500 font-medium dark:text-white"
-      active-class="text-purple-600"                              
+      class="flex items-center text-gray-700 hover:text-emerald-300 font-medium dark:text-white"
+      active-class="text-green-600"                              
     >
       <div class="p-2 flex items-center justify-center w-10 shrink-0">
         <component :is="props.icon" :size="props.size" />
