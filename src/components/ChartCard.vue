@@ -22,7 +22,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="bg-white/45 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col dark:bg-gray-800/40 dark:border dark:border-gray-800
+  <section class="bg-white/45 col-span-3 row-span-3 row-start-2 rounded-xl flex flex-col dark:bg-gray-800/40 border border-emerald-300/45 dark:border dark:border-gray-800
   ">
     <header class="p-6">
       <h2 class="text-balance font-medium dark:text-white">{{ title }}</h2>
