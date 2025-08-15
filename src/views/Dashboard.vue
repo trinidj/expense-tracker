@@ -3,9 +3,10 @@
   import { getAllMonths } from '@/utils/getAllMonths';
   import { BanknoteArrowDown, BanknoteArrowUp, CircleDollarSign } from "lucide-vue-next";
 
+  import { Sun, Moon } from "lucide-vue-next";
   import Chart from 'primevue/chart';
   import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
-  import { Button, Dialog, InputText, AutoComplete, Textarea } from "primevue";
+  import { Button, Dialog, InputText, AutoComplete, Textarea, ToggleSwitch } from "primevue";
   import { Form } from "@primevue/forms";
   import MetricCard from "@/components/MetricCard.vue";
   import ChartCard from "@/components/ChartCard.vue";
@@ -17,8 +18,6 @@
   const isVisible = ref(false);
 
   onMounted(() => {
-    console.log(typeof Chart);
-
     barData.value = setBarData();
     barOptions.value = setBarOptions();
   });
@@ -79,14 +78,30 @@
 </script>
 
 <template>
-  <div class="flex flex-col h-screen flex-1">
+  <div 
+    class="flex flex-col h-screen flex-1 
+         bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 
+         dark:from-gray-900 dark:via-gray-800 dark:to-purple-800
+  ">
     <header class="flex flex-row p-5 justify-between items-center">
       <div class="flex flex-col">
-        <h1 class="text-2xl">Dashboard</h1>
-        <p>Track your expenses and manage your finances</p>
+        <h1 class="text-3xl font-medium dark:text-white">Dashboard</h1>
+        <p class="text-sm text-gray-400">Track your expenses and manage your finances</p>
       </div>
 
-      <div class="flex h-fit">
+      <div class="flex flex-row items-center gap-4 h-fit">
+        <div class="flex flex-row items-center gap-3">
+          <Sun 
+            class="dark:text-white"
+          />
+          <ToggleSwitch 
+            
+          />
+          <Moon 
+            class="dark:text-white"
+          />
+        </div>
+
         <Button type="button" label="Add Transaction" severity="help" @click="isVisible = true" />
       </div>
     </header>
