@@ -106,12 +106,14 @@
       <div class="flex flex-row items-center gap-4 h-fit">
         <div class="flex flex-row items-center gap-3">
           <Sun 
+            :size="20"
             class="dark:text-white"
           />
           <ToggleSwitch 
             v-model="isDarkMode"
           />
           <Moon 
+            :size="20"
             class="dark:text-white"
           />
         </div>
