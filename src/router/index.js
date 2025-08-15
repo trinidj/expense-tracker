@@ -3,7 +3,6 @@ import Dashboard from '@/views/Dashboard.vue';
 import Transactions from '@/views/Transactions.vue';
 import Reports from '@/views/Reports.vue';
 import Budget from '@/views/Budget.vue';
-import Settings from '@/views/Settings.vue';
 
 const routes = [
   {
@@ -30,11 +29,6 @@ const routes = [
     name: 'Budgets',
     component: Budget
   },
-  {
-    path: '/settings',
-    name: 'Settings',
-    component: Settings
-  }
 ];
 
 const router = createRouter({
