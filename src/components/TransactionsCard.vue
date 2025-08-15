@@ -1,5 +1,7 @@
 <script setup>
-  import { RouterLink } from 'vue-router';
+  import { Button } from 'primevue';
+
+  const emit = defineEmits(['add-transaction'])
 </script>
 
 <template>
@@ -7,14 +9,12 @@
     <header class="p-6 flex flex-row justify-between item-center">
       <h2 class="text-balance font-medium dark:text-white">Recent Transactions</h2>
 
-      <RouterLink
-        :to="'/transactions'"
-        class="hover:underline dark:text-white"
-      >
-        <p class="dark:text-white">View All</p>
-      </RouterLink>
+      <Button 
+        type="button" 
+        label="Add Transaction" 
+        severity="success" 
+        @click="emit('add-transaction')" />
     </header>
-
     <div>
 
     </div>
