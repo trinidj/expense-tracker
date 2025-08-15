@@ -43,8 +43,8 @@
         {
           label: 'Total',
           data: [1200, 1900, 3000, 500, 2000, 3000, 1500, 2400, 1800, 2200, 2600, 3200],
-          backgroundColor: '#a855f7',
-          borderColor: '#a855f7',
+          backgroundColor: '#10b981',
+          borderColor: '#10b981',
           borderRadius: 5,
           borderWidth: 1
         }
@@ -94,8 +94,8 @@
 <template>
   <div 
     class="flex flex-col h-screen flex-1 overflow-hidden
-         bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 
-         dark:from-gray-900 dark:via-gray-800 dark:to-purple-800
+         bg-gradient-to-b from-white via-emerald-50 to-emerald-100
+         dark:from-gray-900 dark:via-gray-800 dark:to-emerald-800
   ">
     <header class="flex flex-row p-5 justify-between items-center">
       <div class="flex flex-col">
@@ -116,7 +116,7 @@
           />
         </div>
 
-        <Button type="button" label="Add Transaction" severity="help" @click="isVisible = true" />
+        <Button type="button" label="Add Transaction" severity="success" @click="isVisible = true" />
       </div>
     </header>
     <section class="flex-1 p-5 pt-0"> 
@@ -152,7 +152,7 @@
 
               <div class="flex flex-row justify-end gap-4">
                 <Button type="button" label="Cancel" severity="secondary" @click="isVisible = false"/>
-                <Button type="submit" label="Add" severity="help" @click="isVisible = false"/>
+                <Button type="submit" label="Add" severity="success" @click="isVisible = false"/>
               </div>
             </div>
           </Form>
