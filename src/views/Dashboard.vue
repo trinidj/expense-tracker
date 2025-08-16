@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, onMounted, watch } from "vue";
+  import { ref, onMounted } from "vue";
   import { getAllMonths } from '@/utils/getAllMonths';
   import { BanknoteArrowDown, BanknoteArrowUp, CircleDollarSign } from "lucide-vue-next";
 
@@ -11,28 +11,14 @@
   import TransactionsCard from "@/components/TransactionsCard.vue";
   import Header from "@/components/layout/Header.vue";
   
-  import { getTheme } from "@/utils/getTheme";
-
   const barData = ref({});
   const barOptions = ref({});
 
   const isVisible = ref(false);
-  const isDarkMode = ref(false);
 
   onMounted(() => {
     barData.value = setBarData();
     barOptions.value = setBarOptions();
-    
-    getTheme(isDarkMode);
-  });
-
-  watch(isDarkMode, () => {
-    if (isDarkMode.value) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode.value));
   });
 
   const setBarData = () => {
@@ -98,8 +84,6 @@
   ">
     <Header 
       title="Dashboard"
-      :isDarkMode="isDarkMode"
-      @toggle-dark-mode="isDarkMode = $event"
     />
     <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
