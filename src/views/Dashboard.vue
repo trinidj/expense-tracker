@@ -3,15 +3,14 @@
   import { getAllMonths } from '@/utils/getAllMonths';
   import { BanknoteArrowDown, BanknoteArrowUp, CircleDollarSign } from "lucide-vue-next";
 
-  import { Sun, Moon } from "lucide-vue-next";
   import DashboardGrid from '@/components/layout/dashboard/DashboardGrid.vue'
-  import { Button, Dialog, InputText, AutoComplete, Textarea, ToggleSwitch } from "primevue";
+  import { Button, Dialog, InputText, AutoComplete, Textarea } from "primevue";
   import { Form } from "@primevue/forms";
   import MetricCard from "@/components/MetricCard.vue";
   import ChartCard from "@/components/ChartCard.vue";
   import TransactionsCard from "@/components/TransactionsCard.vue";
+  import Header from "@/components/layout/Header.vue";
   
-  import { toggleDarkMode } from "@/utils/toggleDarkMode.js";
   import { getTheme } from "@/utils/getTheme";
 
   const barData = ref({});
@@ -92,35 +91,16 @@
 </script>
 
 <template>
-  <div 
+  <section 
     class="flex flex-col h-screen flex-1 overflow-hidden
          bg-gradient-to-b from-white via-emerald-50 to-emerald-100
          dark:from-gray-900 dark:via-gray-800 dark:to-emerald-800
   ">
-    <header class="flex flex-row p-5 justify-between items-center">
-      <div class="flex flex-col">
-        <h1 class="text-3xl font-medium dark:text-white">Dashboard</h1>
-        <p class="text-sm text-gray-400">Track your expenses and manage your finances</p>
-      </div>
-
-      <div class="flex flex-row items-center gap-4 h-fit">
-        <div class="flex flex-row items-center gap-3">
-          <Sun 
-            :size="20"
-            class="dark:text-white"
-          />
-          <ToggleSwitch 
-            v-model="isDarkMode"
-          />
-          <Moon 
-            :size="20"
-            class="dark:text-white"
-          />
-        </div>
-
-        <Button type="button" label="Add Transaction" severity="success" @click="isVisible = true" />
-      </div>
-    </header>
+    <Header 
+      title="Dashboard"
+      :isDarkMode="isDarkMode"
+      @toggle-dark-mode="isDarkMode = $event"
+    />
     <section class="flex-1 p-5 pt-0"> 
       <DashboardGrid>
         <Dialog 
@@ -174,6 +154,7 @@
           :iconColor="'red'"
           :value="'$500.00'"
         />
+
         <MetricCard 
           :name="'Current Balance'" 
           :icon="CircleDollarSign"
@@ -189,8 +170,10 @@
         />
 
         <!-- Transactions -->
-        <TransactionsCard />
+        <TransactionsCard 
+          @add-transaction="isVisible = true" 
+        />
       </DashboardGrid>
     </section>
-  </div>
+  </section>
 </template>

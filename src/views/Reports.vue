@@ -1,8 +1,11 @@
 <script setup>
+  import Header from '@/components/layout/Header.vue';
 </script>
 
 <template>
-  <div class="flex items-center justify-center">
-    <p>Reports & Analytics</p>
-  </div>
+  <section class="flex-1">
+    <Header 
+      title="Reports & Analytics"
+    />
+  </section>
 </template>
