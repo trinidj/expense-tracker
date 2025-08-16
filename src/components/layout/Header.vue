@@ -1,27 +1,15 @@
 <script setup>
   import { Sun, Moon } from "lucide-vue-next";
   import ToggleSwitch from "primevue/toggleswitch";
-  import { getTheme } from "@/utils/getTheme";
-  import { onMounted } from "vue";
+  import { useDarkMode } from "@/composables/useDarkMode";
 
   const props = defineProps({
     title: {
       type: String
-    },
-    isDarkMode: {
-      type: Boolean,
     }
   });
 
-  const emit = defineEmits(['toggle-dark-mode']);
-
-  const toggleDarkMode = () => {
-    emit('toggle-dark-mode', !props.isDarkMode);
-  };
-
-  onMounted(() => {
-    getTheme(props.isDarkMode);
-  });
+  const { toggleDarkMode } = useDarkMode();
 </script>
 
 <template>
