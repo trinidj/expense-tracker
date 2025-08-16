@@ -42,5 +42,8 @@ export function useDarkMode() {
     initializeTheme();
   });
 
-  return toggleDarkMode
+  return {
+    initializeTheme,
+    toggleDarkMode
+  }
 }
